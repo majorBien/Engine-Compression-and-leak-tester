@@ -1,0 +1,117 @@
+/*
+ * motor.c
+ *
+ *  Created on: Feb 8, 2024
+ *      Author: A0H93628
+ */
+
+
+#include "motor.h"
+
+
+
+void motorControl(double inputPressure, double targetPressure)
+{
+
+	if(inputPressure < targetPressure - 0.5&& step == 1)
+	{
+		motorRight();
+	}
+
+
+
+
+	else if(inputPressure > targetPressure + 0.5 && step == 1)
+	{
+		motorLeft();
+	}
+
+	else if(step ==1)
+	{
+		motorStop();
+		step = 2;
+
+
+	}
+}
+
+
+
+
+
+void motorRight(void)
+{
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_SET);
+	HAL_Delay(10);
+
+}
+
+void motorLeft(void)
+{
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_SET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+
+
+}
+
+void motorStop(void)
+{
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+	HAL_GPIO_WritePin(M_PHASE1_GPIO_Port, M_PHASE1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE2_GPIO_Port, M_PHASE2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE3_GPIO_Port, M_PHASE3_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(M_PHASE4_GPIO_Port, M_PHASE4_Pin, GPIO_PIN_RESET);
+	HAL_Delay(10);
+}
+
+
