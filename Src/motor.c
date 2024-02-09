@@ -9,7 +9,8 @@
 #include "motor.h"
 
 
-
+//dupa
+//dupa2
 void motorControl(double inputPressure, double targetPressure)
 {
 
