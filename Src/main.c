@@ -39,7 +39,7 @@ uint32_t value[3];
 double inputPressure;
 double testPressure;
 double targetPressure;
-uint8_t step;
+
 
 
 
@@ -185,11 +185,10 @@ int main(void)
 
 
 	  measurements();
-	  //double2string(inputPressure,0 ,3);
-	cylinder_capacity();
-	double2string(Cylinder_capacity,0,3);
+	  //double2string(testPressure,0 ,3);
 
-	cylinderLeakTest(inputPressure, targetPressure, step);
+
+	cylinderLeakTest(inputPressure, targetPressure, testPressure, step);
 	leak_test_start();
     /* USER CODE END WHILE */
 

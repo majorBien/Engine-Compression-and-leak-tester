@@ -9,12 +9,11 @@
 #include "motor.h"
 
 
-//dupa
-//dupa2
+
 void motorControl(double inputPressure, double targetPressure)
 {
 
-	if(inputPressure < targetPressure - 0.5&& step == 1)
+	if(inputPressure < targetPressure - 0.05 && step == 1)
 	{
 		motorRight();
 	}
@@ -22,7 +21,7 @@ void motorControl(double inputPressure, double targetPressure)
 
 
 
-	else if(inputPressure > targetPressure + 0.5 && step == 1)
+	else if(inputPressure > targetPressure + 0.05 && step == 1)
 	{
 		motorLeft();
 	}

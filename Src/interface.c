@@ -56,7 +56,8 @@ void printFunction(int choice)
 	}
 	if(arr[0] != arr[1]) lcd_clear();
 
-
+	if(step == 0)
+	{
 	switch(choice)
 		{
 		case 1:
@@ -65,6 +66,8 @@ void printFunction(int choice)
 		lcd_send_string("Test szczelnosci");
 		lcd_set_cursor(5, 1);
 		lcd_send_string("cylindrow");
+		cylinder_capacity();
+		double2string(Cylinder_capacity,0,3);
 	//	lcd_set_cursor(0, 2);
 	//	lcd_send_string("pojemnosc skokowa:");
 
@@ -76,6 +79,8 @@ void printFunction(int choice)
 		lcd_send_string("Test szczelnosci");
 		lcd_set_cursor(1, 1);
 		lcd_send_string("ukladu  dolotowego");
+		cylinder_capacity();
+		double2string(Cylinder_capacity,0,3);
 
 		break;
 
@@ -96,7 +101,7 @@ void printFunction(int choice)
 
 		break;
 		}
-
+	}
 }
 
 double scaleNormPressure(int analog_pressure)
@@ -147,13 +152,54 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 }
 
-void cylinderLeakTest(double inputPressure, double targetPressure, double testPressure)
+void cylinderLeakTest(double inputPressure, double targetPressure,double testPressure)
 {
-
+	uint8_t flag1;
 	motorControl(inputPressure, targetPressure);
+	if(step == 1)
+	{
+	flag1 = 0;
+	lcd_set_cursor(0, 0);
+	lcd_send_string("Napelnianie");
+	lcd_set_cursor(0, 1);
+	lcd_send_string("cisnienie:");
+	lcd_set_cursor(0, 2);
+	lcd_send_string("wejsciowe:");
+	double2string(inputPressure,12 ,2);
+	lcd_set_cursor(0, 3);
+	lcd_send_string("zadane:");
+	double2string(targetPressure,12 ,3);
+	lcd_set_cursor(17, 2);
+	lcd_send_string("bar");
+	lcd_set_cursor(17, 3);
+	lcd_send_string("bar");
+	}
 
+	if(step == 2)
+	{
 
+		if(flag1==0)
+		{
+			test_time = 0;
+			flag1 = 1;
+			step = 3;
+			lcd_clear();
+		}
 
+	}
+
+	if(step == 3)
+	{
+		lcd_set_cursor(0,0);
+		lcd_send_string("Stabilizacja");
+		lcd_set_cursor(0, 1);
+		lcd_send_string("cisnienie:");
+		lcd_set_cursor(0, 2);
+		lcd_send_string("testu:");
+		double2string(testPressure,12 ,2);;
+		lcd_set_cursor(17, 2);
+		lcd_send_string("bar");
+	}
 }
 
 

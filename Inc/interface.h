@@ -21,7 +21,7 @@ char* float2string(float value, uint8_t x, uint8_t y);
 
 void turboLeakTest(void);
 
-void cylinderLeakTest(double inputPressure, double targetPressure, double testPressure);
+void cylinderLeakTest(double inputPressure, double targetPressure,double testPressure);
 
 void compressionTest(void);
 
