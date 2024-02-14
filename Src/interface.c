@@ -155,17 +155,30 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void cylinderLeakTest(double inputPressure, double targetPressure,double testPressure)
 {
 	uint8_t flag1;
-	motorControl(inputPressure, targetPressure);
+	uint8_t flag2;
+	float regulatorPressure = inputPressure + testPressure;
 	if(step == 1)
 	{
+		lcd_clear();
+		step = 2;
+	}
+
+
+
+
+	if(step == 2)
+	{
+
 	flag1 = 0;
+	flag2 = 0;
+
 	lcd_set_cursor(0, 0);
-	lcd_send_string("Napelnianie");
+	lcd_send_string("Kalibracja");
 	lcd_set_cursor(0, 1);
 	lcd_send_string("cisnienie:");
 	lcd_set_cursor(0, 2);
 	lcd_send_string("wejsciowe:");
-	double2string(inputPressure,12 ,2);
+	double2string(regulatorPressure,12 ,2);
 	lcd_set_cursor(0, 3);
 	lcd_send_string("zadane:");
 	double2string(targetPressure,12 ,3);
@@ -173,22 +186,66 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 	lcd_send_string("bar");
 	lcd_set_cursor(17, 3);
 	lcd_send_string("bar");
+
+	if(regulatorPressure > targetPressure - 0.05 && regulatorPressure < targetPressure + 0.05) step = 3;
 	}
 
-	if(step == 2)
+
+
+	if(step == 3)
 	{
 
 		if(flag1==0)
 		{
-			test_time = 0;
+
 			flag1 = 1;
-			step = 3;
+			step = 4;
 			lcd_clear();
 		}
 
 	}
 
-	if(step == 3)
+
+
+	if(step == 4)
+	{
+
+		lcd_set_cursor(0, 0);
+		lcd_send_string("Napelnianie");
+		lcd_set_cursor(0, 1);
+		lcd_send_string("cisnienie:");
+		lcd_set_cursor(0, 2);
+		lcd_send_string("wejsciowe:");
+		double2string(inputPressure,12 ,2);
+		lcd_set_cursor(0, 3);
+		lcd_send_string("zadane:");
+		double2string(targetPressure,12 ,3);
+		lcd_set_cursor(17, 2);
+		lcd_send_string("bar");
+		lcd_set_cursor(17, 3);
+		lcd_send_string("bar");
+		if(inputPressure > targetPressure - 0.05&&inputPressure < targetPressure + 0.05) step = 5;
+
+	}
+
+
+
+	if(step == 5)
+	{
+
+
+			test_time = 0;
+			step = 6;
+			lcd_clear();
+
+
+	}
+
+
+
+
+
+	if(step == 6)
 	{
 		lcd_set_cursor(0,0);
 		lcd_send_string("Stabilizacja");

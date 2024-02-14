@@ -36,8 +36,8 @@ uint16_t raw;
 uint16_t iterator;
 uint8_t measure = 0;
 uint32_t value[3];
-double inputPressure;
-double testPressure;
+double pressure1;
+double pressure2;
 double targetPressure;
 
 
@@ -94,8 +94,8 @@ void measurements()
     uint16_t inputMax = 4095;
     uint16_t outputMin = 0;
     uint16_t outputMax = 28;
-	 inputPressure = ((double)(value[1] - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin;
-	 testPressure = ((double)(value[2] - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin;
+	 pressure1 = ((double)(value[1] - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin;
+	 pressure2 = ((double)(value[2] - inputMin) / (inputMax - inputMin)) * (outputMax - outputMin) + outputMin;
 }
 
 
@@ -188,7 +188,7 @@ int main(void)
 	  //double2string(testPressure,0 ,3);
 
 
-	cylinderLeakTest(inputPressure, targetPressure, testPressure, step);
+	cylinderLeakTest(pressure1, targetPressure, pressure2, step);
 	leak_test_start();
     /* USER CODE END WHILE */
 

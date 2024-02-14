@@ -13,7 +13,7 @@
 void motorControl(double inputPressure, double targetPressure)
 {
 
-	if(inputPressure < targetPressure - 0.05 && step == 1)
+	if(inputPressure < targetPressure - 0.05 && step == 2)
 	{
 		motorRight();
 	}
@@ -21,15 +21,15 @@ void motorControl(double inputPressure, double targetPressure)
 
 
 
-	else if(inputPressure > targetPressure + 0.05 && step == 1)
+	else if(inputPressure > targetPressure + 0.05 && step == 2)
 	{
 		motorLeft();
 	}
 
-	else if(step ==1)
+	else if(step ==2)
 	{
 		motorStop();
-		step = 2;
+		step = 3;
 
 
 	}
