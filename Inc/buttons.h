@@ -2,7 +2,7 @@
  * buttons.h
  *
  *  Created on: Sep 23, 2023
- *      Author: shadow7
+ *      Author: shadoww7
  */
 
 #ifndef INC_BUTTONS_H_

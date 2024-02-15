@@ -2,7 +2,7 @@
  * motor.h
  *
  *  Created on: Feb 8, 2024
- *      Author: A0H93628
+ *      Author: shadoww7
  */
 
 #ifndef INC_MOTOR_H_

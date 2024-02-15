@@ -2,7 +2,7 @@
  * bernoullie_law.h
  *
  *  Created on: 14 lut 2024
- *      Author: A0H93628
+ *      Author: shadoww7
  */
 
 #ifndef INC_BERNOULLIE_LAW_H_
@@ -11,7 +11,7 @@
 #include "main.h"
 #include "math.h"
 
-double BernoulieLawFunction(double pressure1, double pressure2, uint16_t k, double air_viscosity, double tubeRadius, double distance);
+double BernoulieLawFunction(double pressure1, double pressure2, double air_viscosity, double tubeRadius, double distance);
 
 
 

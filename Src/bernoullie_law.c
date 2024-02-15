@@ -2,7 +2,7 @@
  * bernoullie_law.c
  *
  *  Created on: 14 lut 2024
- *      Author: A0H93628
+ *      Author: shadoww7
  */
 
 
@@ -37,7 +37,7 @@ double BernoulieLawFunction(double pressure1, double pressure2, double air_visco
 	double delta_air = pressure1 - pressure2;
 
 	double k = 32 * air_viscosity * distance / (tubeRadius*tubeRadius*tubeRadius*tubeRadius);
-	double regulator_pressure = pressure1 + (k * (tubeRadius*tubeRadius*tubeRadius*tubeRadius) / (8 * air_viscosity * distance) / 2);
+	double regulator_pressure = pressure1 + (k * (tubeRadius*tubeRadius*tubeRadius*tubeRadius) / (8 * air_viscosity * distance) / 2) + delta_air;
 
-
+	return regulator_pressure;
 }

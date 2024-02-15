@@ -9,31 +9,32 @@
 #include "main.h"
 #include "stdbool.h"
 #include "tim.h"
+#include "bernoullie_law.h"
 
 int chooseFunction(int analog_choice)
 {
 
 	if(analog_choice >=3200&&analog_choice<3600)
-			{
-					choice = 1;
-			}
+	{
+		choice = 1;
+	}
 	if(analog_choice >=3600&&analog_choice<3750)
-			{
-					choice = 2;
-			}
+	{
+		choice = 2;
+	}
 	if(analog_choice >=3750&&analog_choice<3850)
-			{
-					choice = 3;
-			}
+	{
+		choice = 3;
+	}
 	if(analog_choice > 3850)
-			{
-					choice = 4;
-			}
+	{
+		choice = 4;
+	}
 
 
 
 
-		return choice;
+	return choice;
 }
 
 
@@ -156,7 +157,8 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 {
 	uint8_t flag1;
 	uint8_t flag2;
-	float regulatorPressure = inputPressure + testPressure;
+	//float regulatorPressure = inputPressure + testPressure;
+
 	if(step == 1)
 	{
 		lcd_clear();
@@ -171,7 +173,7 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 
 	flag1 = 0;
 	flag2 = 0;
-
+	double regulatorPressure = BernoulieLawFunction(inputPressure, testPressure, 0.000018, 0.06, 0.05);
 	lcd_set_cursor(0, 0);
 	lcd_send_string("Kalibracja");
 	lcd_set_cursor(0, 1);
