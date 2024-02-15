@@ -141,12 +141,23 @@ char* float2string(float value, uint8_t x, uint8_t y)
 
 }
 
+char* int2string(int value, uint8_t x, uint8_t y)
+{
+
+		char outputString[6];
+		sprintf(outputString, "%d", value);
+		lcd_set_cursor(x, y);
+		lcd_send_string(outputString);
+
+
+
+}
 
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 
-	if(htim == &htim6)
+	if(htim == &htim6&&step==6)
 	{
 		test_time++;
 	}
@@ -157,6 +168,7 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 {
 	uint8_t flag1;
 	uint8_t flag2;
+	uint8_t flag3;
 	//float regulatorPressure = inputPressure + testPressure;
 
 	if(step == 1)
@@ -173,13 +185,14 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 
 	flag1 = 0;
 	flag2 = 0;
+
 	double regulatorPressure = BernoulieLawFunction(inputPressure, testPressure, 0.000018, 0.06, 0.05);
 	lcd_set_cursor(0, 0);
 	lcd_send_string("Kalibracja");
 	lcd_set_cursor(0, 1);
 	lcd_send_string("cisnienie:");
 	lcd_set_cursor(0, 2);
-	lcd_send_string("wejsciowe:");
+	lcd_send_string("regulatora:");
 	double2string(regulatorPressure,12 ,2);
 	lcd_set_cursor(0, 3);
 	lcd_send_string("zadane:");
@@ -235,7 +248,6 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 	if(step == 5)
 	{
 
-
 			test_time = 0;
 			step = 6;
 			lcd_clear();
@@ -245,20 +257,58 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 
 
 
-
-
 	if(step == 6)
 	{
+
 		lcd_set_cursor(0,0);
 		lcd_send_string("Stabilizacja");
 		lcd_set_cursor(0, 1);
 		lcd_send_string("cisnienie:");
 		lcd_set_cursor(0, 2);
 		lcd_send_string("testu:");
+		double2string(testPressure,12 ,2);
+		lcd_set_cursor(17, 2);
+		lcd_send_string("bar");
+		lcd_set_cursor(0, 3);
+		lcd_send_string("czas");
+		lcd_set_cursor(12, 3);
+		int2string(test_time, 12, 3);
+		lcd_set_cursor(18, 3);
+		lcd_send_string("s");
+
+		if(test_time==10) step = 7;
+
+
+	}
+
+
+	if(step == 7)
+	{
+
+
+			test_time = 0;
+			step = 8;
+			lcd_clear();
+
+
+	}
+
+
+	if(step == 8)
+	{
+		lcd_set_cursor(0,0);
+		lcd_send_string("Test szczelnosci");
+		lcd_set_cursor(0, 1);
+		lcd_send_string("spadek cisnienia:");
+		lcd_set_cursor(0, 2);
+		lcd_send_string("testu:");
 		double2string(testPressure,12 ,2);;
 		lcd_set_cursor(17, 2);
 		lcd_send_string("bar");
 	}
+
+
+
 }
 
 

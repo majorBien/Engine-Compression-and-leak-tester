@@ -39,7 +39,7 @@ uint32_t value[3];
 double pressure1;
 double pressure2;
 double targetPressure;
-
+uint8_t globalFlag1;
 
 
 
