@@ -11,7 +11,7 @@
 #include "main.h"
 #include "math.h"
 
-double BernoulieLawFunction(uint16_t k, double air_viscosity, double deltaAir, double tubeRadius, double distance);
+double BernoulieLawFunction(double pressure1, double pressure2, uint16_t k, double air_viscosity, double tubeRadius, double distance);
 
 
 
