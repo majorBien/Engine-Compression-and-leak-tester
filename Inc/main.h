@@ -43,6 +43,9 @@ uint8_t cnt;
 int test_time;
 double Cylinder_capacity;
 double Rounded_capacity;
+double PressureAfterStabilization;
+double ProcentageAirDrop;
+double AirDrop;
 uint8_t capture;
 uint8_t step;
 
