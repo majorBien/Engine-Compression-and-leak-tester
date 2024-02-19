@@ -2,11 +2,11 @@
  * measurements.h
  *
  *  Created on: 27 sie 2023
- *      Author: shadow7
+ *      Author: majorBien
  */
 #include "stm32l4xx_hal.h"
 #include "main.h"
-
+#include <stdio.h>
 
 
 int chooseFunction(int analog_choice);
