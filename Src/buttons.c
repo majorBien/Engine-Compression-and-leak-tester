@@ -2,7 +2,7 @@
  * buttons.c
  *
  *  Created on: Sep 23, 2023
- *      Author: shadow7
+ *      Author: majorBien
  */
 #include "buttons.h"
 
@@ -12,19 +12,19 @@ void cylinder_capacity(void)
 
 
 	  if(HAL_GPIO_ReadPin(B_UP_GPIO_Port, B_UP_Pin)== GPIO_PIN_SET)
-			  	  {
-				  	 HAL_Delay(100);
-			  		 Cylinder_capacity = Cylinder_capacity + 0.1;
-			  		 HAL_Delay(100);
-			  	  }
-			  	  if(HAL_GPIO_ReadPin(B_DOWN_GPIO_Port, B_DOWN_Pin)== GPIO_PIN_SET)
-			  	  {
-			  		 HAL_Delay(100);
-			  		 Cylinder_capacity = Cylinder_capacity - 0.1;
-			  		 HAL_Delay(100);
-			  	  }
-			  	 Rounded_capacity = roundf(Cylinder_capacity * 10.0) / 10.0;
-			  	 Rounded_capacity = Rounded_capacity + 0.00001;
+	  {
+	  HAL_Delay(100);
+	  Cylinder_capacity = Cylinder_capacity + 0.1;
+	  HAL_Delay(100);
+	  }
+	  if(HAL_GPIO_ReadPin(B_DOWN_GPIO_Port, B_DOWN_Pin)== GPIO_PIN_SET)
+	  {
+	  HAL_Delay(100);
+	  Cylinder_capacity = Cylinder_capacity - 0.1;
+	  HAL_Delay(100);
+	  }
+	  Rounded_capacity = roundf(Cylinder_capacity * 10.0) / 10.0;
+	  Rounded_capacity = Rounded_capacity + 0.00001;
 
 }
 
