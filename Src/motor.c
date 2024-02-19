@@ -2,7 +2,7 @@
  * motor.c
  *
  *  Created on: Feb 8, 2024
- *      Author: shadoww7
+ *      Author: majorBien
  */
 
 

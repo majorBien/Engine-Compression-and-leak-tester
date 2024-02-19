@@ -2,7 +2,7 @@
  * bernoullie_law.h
  *
  *  Created on: 14 lut 2024
- *      Author: shadoww7
+ *      Author: majorBien
  */
 
 #ifndef INC_BERNOULLIE_LAW_H_

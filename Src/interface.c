@@ -2,7 +2,7 @@
  * measurements.c
  *
  *  Created on: 27 sie 2023
- *      Author: shadow7
+ *      Author: majorBien
  */
 #include <interface.h>
 #include "i2c-lcd.h"
@@ -68,9 +68,12 @@ void printFunction(int choice)
 		lcd_set_cursor(5, 1);
 		lcd_send_string("cylindrow");
 		cylinder_capacity();
-		double2string(Cylinder_capacity,0,3);
-	//	lcd_set_cursor(0, 2);
-	//	lcd_send_string("pojemnosc skokowa:");
+		lcd_set_cursor(0, 3);
+		lcd_send_string("pojemnosc:");
+		double2string(Cylinder_capacity,11,3);
+		lcd_set_cursor(16, 3);
+		lcd_send_string("cm^3");
+
 
 		break;
 

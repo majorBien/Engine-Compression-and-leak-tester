@@ -32,8 +32,15 @@ void cylinder_capacity(void)
 void leak_test_start(void)
 {
 	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && choice == 1 && step==0)
-		{
+	{
 		step = 1;
-		}
+	}
+
+	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && step==10)
+	{
+		step = 0;
+		HAL_Delay(500);
+		lcd_clear();
+	}
 
 }

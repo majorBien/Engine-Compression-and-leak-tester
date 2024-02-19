@@ -2,7 +2,7 @@
  * bernoullie_law.c
  *
  *  Created on: 14 lut 2024
- *      Author: shadoww7
+ *      Author: majorBien
  */
 
 
