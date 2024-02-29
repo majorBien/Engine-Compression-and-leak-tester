@@ -389,212 +389,12 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 }
 
 
-/*
-void turboLeakTest(double inputPressure, double targetPressure,double testPressure)
-{
-	if(choice==2)
-	{
-	uint8_t flag1;
-	uint8_t flag2;
-	uint8_t flag3;
-	double pressureAfterStabilization;
-	double airDrop;
-	double procentageAirDrop;
-	//float regulatorPressure = inputPressure + testPressure;
-
-	if(step == 1)
-	{
-		lcd_clear();
-		step = 2;
-	}
-
-
-
-
-	if(step == 2)
-	{
-
-	flag1 = 0;
-	flag2 = 0;
-
-	double regulatorPressure = BernoulieLawFunction(inputPressure, testPressure, 0.000018, 0.06, 0.05);
-
-
-	lcd_set_cursor(0, 0);
-	lcd_send_string("Kalibracja");
-	lcd_set_cursor(0, 1);
-	lcd_send_string("cisnienie:");
-	lcd_set_cursor(0, 2);
-	lcd_send_string("regulatora:");
-	double2string(regulatorPressure,12 ,2);
-	lcd_set_cursor(0, 3);
-	lcd_send_string("zadane:");
-	double2string(targetPressure,12 ,3);
-	lcd_set_cursor(17, 2);
-	lcd_send_string("bar");
-	lcd_set_cursor(17, 3);
-	lcd_send_string("bar");
-
-	if(regulatorPressure > targetPressure - 0.05 && regulatorPressure < targetPressure + 0.05) step = 3;
-	}
-
-
-
-	if(step == 3)
-	{
-
-		if(flag1==0)
-		{
-
-			flag1 = 1;
-			step = 4;
-			lcd_clear();
-		}
-
-	}
-
-
-
-	if(step == 4)
-	{
-
-		lcd_set_cursor(0, 0);
-		lcd_send_string("Napelnianie");
-		lcd_set_cursor(0, 1);
-		lcd_send_string("cisnienie:");
-		lcd_set_cursor(0, 2);
-		lcd_send_string("wejsciowe:");
-		double2string(testPressure,12 ,2);
-		lcd_set_cursor(0, 3);
-		lcd_send_string("zadane:");
-		double2string(targetPressure,12 ,3);
-		lcd_set_cursor(17, 2);
-		lcd_send_string("bar");
-		lcd_set_cursor(17, 3);
-		lcd_send_string("bar");
-		if(testPressure > targetPressure - 0.05&&testPressure < targetPressure + 0.05) step = 5;
-
-	}
-
-
-
-	if(step == 5)
-	{
-
-			test_time = 0;
-			step = 6;
-			lcd_clear();
-
-
-	}
-
-
-
-	if(step == 6)
-	{
-
-		lcd_set_cursor(0,0);
-		lcd_send_string("Stabilizacja");
-		lcd_set_cursor(0, 1);
-		lcd_send_string("cisnienie");
-		lcd_set_cursor(0, 2);
-		lcd_send_string("testu:");
-		double2string(testPressure,12 ,2);
-		lcd_set_cursor(17, 2);
-		lcd_send_string("bar");
-		lcd_set_cursor(0, 3);
-		lcd_send_string("czas");
-		lcd_set_cursor(12, 3);
-		int2string(test_time, 12, 3);
-		lcd_set_cursor(18, 3);
-		lcd_send_string("s");
-
-		if(test_time==10) step = 7;
-
-
-	}
-
-
-	if(step == 7)
-	{
-
-			PressureAfterStabilization = testPressure;
-			test_time = 0;
-			step = 8;
-			lcd_clear();
-			AirDrop = 0.0;
-
-
-	}
-
-
-	if(step == 8)
-	{
-		AirDrop = PressureAfterStabilization - testPressure;
-		lcd_set_cursor(0,0);
-		lcd_send_string("Test szczelnosci");
-		lcd_set_cursor(0, 1);
-		lcd_send_string("spadek:");
-		if (AirDrop > 0.0) double2string(AirDrop,11 ,1);
-		lcd_set_cursor(0, 2);
-		lcd_send_string("cisnienie:");
-		double2string(testPressure,11 ,2);
-		lcd_set_cursor(17, 1);
-		lcd_send_string("bar");
-		lcd_set_cursor(17, 2);
-		lcd_send_string("bar");
-		int2string(test_time, 12, 3);
-		lcd_set_cursor(18, 3);
-		lcd_send_string("s");
-		if(test_time==10) step = 9;
-	}
-
-	if(step == 9)
-	{
-
-
-		step = 10;
-		lcd_clear();
-
-
-
-	}
-
-
-	if(step == 10)
-	{
-
-		ProcentageAirDrop = AirDrop / PressureAfterStabilization * 100;
-		lcd_set_cursor(0, 0);
-		lcd_send_string("Spadek cisnienia:");
-		lcd_set_cursor(0, 1);
-		lcd_send_string("--------------------");
-	    double2string(AirDrop,0 ,2);
-		lcd_set_cursor(5, 2);
-		lcd_send_string("bar");
-		double2string(ProcentageAirDrop,0 ,3);
-		lcd_set_cursor(5, 3);
-		lcd_send_string("%");
-
-
-
-	}
-
-
-	}
-
-}
-*/
 
 void compressionTest(double pressure)
 {
 
-	if(choice==3)
+	if(choice==3||choice==4)
 	{
-
-	double compression;
-	double compression_buffer[2];
-
 
 	if(step == 1)
 		{
@@ -609,34 +409,24 @@ void compressionTest(double pressure)
 
 		if(pressure > 0.1)
 		{
-
-			if(pressure > compression_buffer[0])
+			if (pressure > highest_pressure)
 			{
-				compression_buffer[1] = pressure;
-				compression = pressure;
+			    highest_pressure = pressure;
+			    compression = pressure;
+			    compression_psi = pressure*14.503774;
 			}
-
-
-
-			if(compression_buffer[0] > 0 && pressure > compression_buffer[1])
-			{
-				compression_buffer[0] = pressure;
-				compression = pressure;
-			}
-
 
 		}
-
-		compression = pressure;
 
 		lcd_set_cursor(0, 0);
 		lcd_send_string("Pomiar kompresji:");
 		lcd_set_cursor(0, 1);
 		lcd_send_string("--------------------");
-		lcd_set_cursor(0, 2);
-		lcd_send_string("W trakcie...");
+		double2string(compression_psi,0 ,2);
+		lcd_set_cursor(6, 2);
+		lcd_send_string("psi");
 		double2string(compression,0 ,3);
-		lcd_set_cursor(5, 3);
+		lcd_set_cursor(6, 3);
 		lcd_send_string("bar");
 
 	}

@@ -47,6 +47,9 @@ double PressureAfterStabilization;
 double ProcentageAirDrop;
 double AirDrop;
 double targetPressure;
+double highest_pressure;
+double compression;
+double compression_psi;
 uint8_t capture;
 uint8_t step;
 
