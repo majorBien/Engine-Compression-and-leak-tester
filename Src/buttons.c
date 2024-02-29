@@ -62,7 +62,7 @@ void leak_test_start(void)
 	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && step==10)
 	{
 		step = 0;
-		HAL_Delay(500);
+		HAL_Delay(200);
 		lcd_clear();
 	}
 
@@ -79,7 +79,7 @@ void turbo_test_start(void)
 	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && step==10)
 	{
 		step = 0;
-		HAL_Delay(500);
+		HAL_Delay(200);
 		lcd_clear();
 	}
 

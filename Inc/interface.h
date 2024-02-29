@@ -11,6 +11,8 @@
 
 int chooseFunction(int analog_choice);
 
+int capacity2pressure(double cylinderCapacity);
+
 void printFunction(int choice);
 
 double scaleNormPressure(int pressure);

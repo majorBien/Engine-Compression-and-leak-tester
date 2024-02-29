@@ -186,7 +186,7 @@ int main(void)
 	  measurements();
 	  //double2string(testPressure,0 ,3);
 
-
+	if (choice == 1) targetPressure = capacity2pressure(Cylinder_capacity);
 	cylinderLeakTest(pressure1, targetPressure, pressure2, step);
 
 	target_pressure();

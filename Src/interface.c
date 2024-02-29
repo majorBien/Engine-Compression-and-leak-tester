@@ -38,6 +38,27 @@ int chooseFunction(int analog_choice)
 }
 
 
+int capacity2pressure(double cylinderCapacity)
+{
+	int targetPressure = 0.0;
+
+	if(cylinderCapacity < 1.4)
+	{
+		targetPressure = 3.0;
+	}
+	else if (cylinderCapacity > 1.4 && cylinderCapacity < 2.0)
+	{
+		targetPressure = 3.5;
+	}
+
+	else if (cylinderCapacity >= 2.0)
+	{
+		targetPressure = 4.0;
+	}
+	return targetPressure;
+}
+
+
 void printFunction(int choice)
 {
 
