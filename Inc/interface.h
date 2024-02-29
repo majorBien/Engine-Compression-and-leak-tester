@@ -25,7 +25,7 @@ void turboLeakTest(double inputPressure, double targetPressure,double testPressu
 
 void cylinderLeakTest(double inputPressure, double targetPressure,double testPressure);
 
-void compressionTest(void);
+void compressionTest(double pressure);
 
 void trottleFlowTest(void);
 

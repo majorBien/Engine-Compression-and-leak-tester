@@ -46,12 +46,12 @@ int capacity2pressure(double cylinderCapacity)
 	{
 		targetPressure = 3.0;
 	}
-	else if (cylinderCapacity > 1.4 && cylinderCapacity < 2.0)
+    if (cylinderCapacity > 1.4 && cylinderCapacity < 2.0)
 	{
 		targetPressure = 3.5;
 	}
 
-	else if (cylinderCapacity >= 2.0)
+	if (cylinderCapacity >= 2.0)
 	{
 		targetPressure = 4.0;
 	}
@@ -193,6 +193,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 void cylinderLeakTest(double inputPressure, double targetPressure,double testPressure)
 {
+
+	if(choice==1||choice==2)
+	{
+
 	uint8_t flag1;
 	uint8_t flag2;
 	uint8_t flag3;
@@ -380,14 +384,16 @@ void cylinderLeakTest(double inputPressure, double targetPressure,double testPre
 	}
 
 
-
+	}
 
 }
 
 
-
+/*
 void turboLeakTest(double inputPressure, double targetPressure,double testPressure)
 {
+	if(choice==2)
+	{
 	uint8_t flag1;
 	uint8_t flag2;
 	uint8_t flag3;
@@ -575,8 +581,67 @@ void turboLeakTest(double inputPressure, double targetPressure,double testPressu
 	}
 
 
-
+	}
 
 }
+*/
 
+void compressionTest(double pressure)
+{
+
+	if(choice==3)
+	{
+
+	double compression;
+	double compression_buffer[2];
+
+
+	if(step == 1)
+		{
+		compression = 0.0;
+		lcd_clear();
+		step = 2;
+		}
+
+	if(step == 2)
+	{
+
+
+		if(pressure > 0.1)
+		{
+
+			if(pressure > compression_buffer[0])
+			{
+				compression_buffer[1] = pressure;
+				compression = pressure;
+			}
+
+
+
+			if(compression_buffer[0] > 0 && pressure > compression_buffer[1])
+			{
+				compression_buffer[0] = pressure;
+				compression = pressure;
+			}
+
+
+		}
+
+		compression = pressure;
+
+		lcd_set_cursor(0, 0);
+		lcd_send_string("Pomiar kompresji:");
+		lcd_set_cursor(0, 1);
+		lcd_send_string("--------------------");
+		lcd_set_cursor(0, 2);
+		lcd_send_string("W trakcie...");
+		double2string(compression,0 ,3);
+		lcd_set_cursor(5, 3);
+		lcd_send_string("bar");
+
+	}
+
+	}
+
+}
 

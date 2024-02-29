@@ -192,6 +192,8 @@ int main(void)
 	target_pressure();
 	leak_test_start();
 	turbo_test_start();
+	compression_test_start();
+	compressionTest(pressure1);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
