@@ -19,7 +19,7 @@ char* double2string(double pressure, uint8_t x, uint8_t y);
 
 char* float2string(float value, uint8_t x, uint8_t y);
 
-void turboLeakTest(void);
+void turboLeakTest(double inputPressure, double targetPressure,double testPressure);
 
 void cylinderLeakTest(double inputPressure, double targetPressure,double testPressure);
 

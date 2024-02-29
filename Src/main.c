@@ -38,7 +38,7 @@ uint8_t measure = 0;
 uint32_t value[3];
 double pressure1;
 double pressure2;
-double targetPressure;
+
 uint8_t globalFlag1;
 
 
@@ -183,13 +183,15 @@ int main(void)
 
 	  printFunction(choice);
 
-
 	  measurements();
 	  //double2string(testPressure,0 ,3);
 
 
 	cylinderLeakTest(pressure1, targetPressure, pressure2, step);
+
+	target_pressure();
 	leak_test_start();
+	turbo_test_start();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

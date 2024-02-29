@@ -46,6 +46,7 @@ double Rounded_capacity;
 double PressureAfterStabilization;
 double ProcentageAirDrop;
 double AirDrop;
+double targetPressure;
 uint8_t capture;
 uint8_t step;
 
