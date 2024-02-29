@@ -91,8 +91,8 @@ void Error_Handler(void);
 #define B_DOWN_GPIO_Port GPIOA
 #define B_UP2_Pin GPIO_PIN_11
 #define B_UP2_GPIO_Port GPIOA
-#define VALVE_DROP_Pin GPIO_PIN_12
-#define VALVE_DROP_GPIO_Port GPIOA
+#define VALVE_OUT_Pin GPIO_PIN_12
+#define VALVE_OUT_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
@@ -101,8 +101,8 @@ void Error_Handler(void);
 #define VCP_RX_GPIO_Port GPIOA
 #define LD3_Pin GPIO_PIN_3
 #define LD3_GPIO_Port GPIOB
-#define VALVE_FLOW_Pin GPIO_PIN_4
-#define VALVE_FLOW_GPIO_Port GPIOB
+#define VALVE_IN_Pin GPIO_PIN_4
+#define VALVE_IN_GPIO_Port GPIOB
 #define B_DOWN2_Pin GPIO_PIN_5
 #define B_DOWN2_GPIO_Port GPIOB
 #define B_RIGHT_Pin GPIO_PIN_6

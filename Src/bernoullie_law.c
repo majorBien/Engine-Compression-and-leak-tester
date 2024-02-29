@@ -29,6 +29,8 @@
 		r - promień węża,
 		μ - lepkość dynamiczna gazu,
 		L - odległość między dwoma presostatami.
+
+
 	    */
 
 
