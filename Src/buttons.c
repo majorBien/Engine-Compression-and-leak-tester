@@ -52,14 +52,14 @@ void target_pressure(void)
 }
 
 
-void leak_test_start(void)
+void leak_test_start(double pressure1, double pressure2)
 {
 	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && choice == 1 && step==0)
 	{
 		step = 1;
 	}
 
-	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && step==10)
+	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && step==10 && pressure1 < 0.1 && pressure2 < 0.1)
 	{
 		step = 0;
 		HAL_Delay(200);
@@ -69,14 +69,14 @@ void leak_test_start(void)
 }
 
 
-void turbo_test_start(void)
+void turbo_test_start(double pressure1, double pressure2)
 {
 	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && choice == 2 && step==0)
 	{
 		step = 1;
 	}
 
-	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && step==10)
+	if((HAL_GPIO_ReadPin(B_UP2_GPIO_Port, B_UP2_Pin)== GPIO_PIN_SET) && step==10 && pressure1 < 0.1 && pressure2 < 0.1)
 	{
 		step = 0;
 		HAL_Delay(200);

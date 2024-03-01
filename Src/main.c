@@ -190,8 +190,8 @@ int main(void)
 	cylinderLeakTest(pressure1, targetPressure, pressure2, step);
 
 	target_pressure();
-	leak_test_start();
-	turbo_test_start();
+	leak_test_start(pressure1, pressure2);
+	turbo_test_start(pressure1, pressure2);
 	compression_test_start();
 	compressionTest(pressure1);
     /* USER CODE END WHILE */

@@ -17,7 +17,7 @@ void cylinder_capacity(void);
 
 void target_pressure(void);
 
-void leak_test_start(void);
+void leak_test_start(double pressure1, double pressure2);
 
 void compression_test_start(void);
 
