@@ -11,7 +11,7 @@ void cylinder_capacity(void)
 	//float cylinder_capacity = Cylinder_capacity;
 
 
-	if(choice==1)
+	if(choice==1&&step==0)
 	{
 	  if(HAL_GPIO_ReadPin(B_UP_GPIO_Port, B_UP_Pin)== GPIO_PIN_SET)
 	  {
@@ -34,7 +34,7 @@ void cylinder_capacity(void)
 void target_pressure(void)
 {
 
-	if(choice == 2)
+	if(choice == 2&&step==0)
 	{
 	  if(HAL_GPIO_ReadPin(B_UP_GPIO_Port, B_UP_Pin)== GPIO_PIN_SET)
 	  {
