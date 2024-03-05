@@ -18,6 +18,10 @@ void leakTestCycle(void)
 
 		switch(step)
 		{
+		case 0:
+		HAL_GPIO_WritePin(VALVE_IN_GPIO_Port, VALVE_IN_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(VALVE_OUT_GPIO_Port, VALVE_OUT_Pin, GPIO_PIN_RESET);
+		break;
 
 		case 1:
 		HAL_GPIO_WritePin(VALVE_IN_GPIO_Port, VALVE_IN_Pin, GPIO_PIN_RESET);
@@ -36,6 +40,13 @@ void leakTestCycle(void)
 		case 6:
 		HAL_GPIO_WritePin(VALVE_IN_GPIO_Port, VALVE_IN_Pin, GPIO_PIN_RESET);
 		break;
+
+		case 10:
+
+		HAL_GPIO_WritePin(VALVE_OUT_GPIO_Port, VALVE_OUT_Pin, GPIO_PIN_SET);
+		break;
+
+
 		}
 
 	}
@@ -51,6 +62,8 @@ void compressionCycle(void)
 	{
 
 
+		HAL_GPIO_WritePin(VALVE_IN_GPIO_Port, VALVE_IN_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(VALVE_OUT_GPIO_Port, VALVE_OUT_Pin, GPIO_PIN_RESET);
 
 
 	}
